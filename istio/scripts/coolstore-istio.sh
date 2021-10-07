@@ -1,3 +1,4 @@
+git pull
 oc apply -f - <<EOF
 apiVersion: maistra.io/v1
 kind: ServiceMeshMemberRoll
@@ -8,5 +9,6 @@ spec:
   members:
     - user6-inventory-dev
 EOF
-oc apply -n user6-coolstore-dev -f $CHE_PROJECTS_ROOT/cloud-native-workshop-v2m1-labs/istio/inventory-gateway.yml
+oc apply -n user6-coolstore-dev -f $CHE_PROJECTS_ROOT/cloud-native-workshop-v2m1-labs/istio/coolstore-inventory-gateway.yml
 oc patch -n user6-coolstore-dev virtualservice/inventory --type='json' -p '[{"op":"add","path":"/spec/hosts","value": ["istio-ingressgateway-user6-istio-system.apps.cluster-4k8mv.4k8mv.sandbox1663.opentlc.com"]}]'
+oc apply -n user6-coolstore-dev -f $CHE_PROJECTS_ROOT/cloud-native-workshop-v2m1-labs/istio/coolstore-destination-rule-all.yaml
