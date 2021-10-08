@@ -7,7 +7,7 @@ metadata:
   namespace: user6-istio-system 
 spec:
   members:
-    - user6-inventory-dev
+    - user6-coolstore-dev
 EOF
 oc patch -n user6-coolstore-dev coolstore --patch '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject:"true"}}}}' --type=merge
 oc apply -n user6-coolstore-dev -f $CHE_PROJECTS_ROOT/cloud-native-workshop-v2m1-labs/istio/coolstore-inventory-gateway.yml
