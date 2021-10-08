@@ -19,13 +19,13 @@ metadata:
   name: inventory
 spec:
   hosts:
-  - "istio-ingressgateway-user6-istio-system.apps.cluster-4k8mv.4k8mv.sandbox1663.opentlc.com"
+  - "*"
   gateways:
   - inventory-gateway
   http:
   - match:
     - uri:
-        exact: /*
+        prefix: /#/
     route:
     - destination:
         host: coolstore
