@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: coolstore
 spec:
-  host: www
+  host: coolstore
   subsets:
   - name: v1
     labels:
